@@ -35,6 +35,7 @@ public class KomponenTerhubungJamak {
         set.add(pointLima);
         set.add(pointEnam);
         set.add(pointTujuh);
+        set.add(pointDelapan);
 
         /**
          * Struktur Data untuk Queue menggunakan BFS.
@@ -45,6 +46,11 @@ public class KomponenTerhubungJamak {
         Point titikAwal = conturIterator.next();
         linkedHashSet.add(titikAwal);
 
+        /**
+         * List Connected Components.
+         */
+        final List<List<Point>> connectedComponentsList = new ArrayList();
+        
         /**
          * Awal BFS. Selama himpunan titik (set) tidak kosong.
          */
@@ -102,10 +108,17 @@ public class KomponenTerhubungJamak {
                  * BFS selesai, deque titik tetangga yang tadi di-enque.
                  */
             }
-            System.out.println(listPoint);
             /**
              * Periksa apakah himpunan titik kosong. Jika kosong, hentikan loop, jika tidak, lanjutkan hingga kosong.
              */
+            connectedComponentsList.add(listPoint);
+        }
+        
+        System.out.println("Jumlah Connected Components: "+connectedComponentsList.size());
+        for (int i = 0; i < connectedComponentsList.size(); i++) {
+            System.out.println("Komponen ke: "+(i+1));
+            System.out.println("Himpunan Titik: "+connectedComponentsList.get(i));
+            System.out.println();
         }
     }
 }
